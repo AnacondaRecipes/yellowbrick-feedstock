@@ -26,6 +26,9 @@ requirements:
     - numpy >=1.16.0
     - scikit-learn >=1.0.0
     - scipy >=1.0.0
+    # until scipy is hotfixed: it brings in the wrong numpy
+    - numpy <1.23.0
+
 
 test:
   imports:
