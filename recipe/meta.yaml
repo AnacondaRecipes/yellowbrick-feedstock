@@ -11,18 +11,19 @@ source:
 
 build:
   number: 0
-  script: {{ PYTHON }} -m pip install . -vv
-  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   host:
-    - python >=3.4
+    - python
     - pip
-    - pytest-runner
+    - setuptools
+    - wheel ==0.38.4
+    - twine ==3.4.1
   run:
-    - python >=3.4
+    - python
     - cycler >=0.10.0
-    - matplotlib-base >=2.0.2,!=3.0.0
+    - matplotlib >=2.0.2,!=3.0.0
     - numpy >=1.16.0
     - scikit-learn >=1.0.0
     - scipy >=1.0.0
@@ -51,12 +52,13 @@ test:
     - pip check
 
 about:
-  home: http://scikit-yb.org/
+  home: https://www.scikit-yb.org
   license: Apache-2.0
   license_family: APACHE
   license_file: LICENSE.txt
   summary: A suite of visual analysis and diagnostic tools for machine learning.
-  doc_url: https://www.scikit-yb.org/en/latest/
+  description: A suite of visual analysis and diagnostic tools for machine learning.
+  doc_url: https://www.scikit-yb.org
   dev_url: https://github.com/DistrictDataLabs/yellowbrick
 
 extra:
