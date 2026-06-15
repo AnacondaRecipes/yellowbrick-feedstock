@@ -6,27 +6,31 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: 99a6336dd2e7ce586a8cde67966b79c51b479d3759f3c083d7e19ffe949f6076
+  patches:
+    - patches/0001-remove-distutils-using.patch
 
 build:
-  number: 0
-  skip: true  # [py<36]
+  number: 1
+  skip: true  # [py<34]
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   host:
-    - python
     - pip
-    - setuptools
+    - python
     - wheel
+    - setuptools
   run:
     - python
-    - cycler >=0.10.0
     - matplotlib-base >=2.0.2,!=3.0.0
-    - numpy >=1.16.0
-    - scikit-learn >=1.0.0
     - scipy >=1.0.0
+    - scikit-learn >=1.0.0
+    - numpy >=1.16.0
+    - cycler >=0.10.0
+    # due to remove distutils
+    - packaging
 
 test:
   imports:
