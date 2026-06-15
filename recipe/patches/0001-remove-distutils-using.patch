@@ -1,0 +1,45 @@
+From 7f6bd861156bb1c1d41c17c73c77ad0180873b80 Mon Sep 17 00:00:00 2001
+From: Andrii Osipov <aosipov@anaconda.com>
+Date: Mon, 15 Jun 2026 05:53:23 -0700
+Subject: [PATCH] remove distutils using
+
+---
+ yellowbrick/style/colors.py | 4 ++--
+ yellowbrick/style/rcmod.py  | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/yellowbrick/style/colors.py b/yellowbrick/style/colors.py
+index a285909..f6c8da1 100644
+--- a/yellowbrick/style/colors.py
++++ b/yellowbrick/style/colors.py
+@@ -30,9 +30,9 @@ from yellowbrick.exceptions import YellowbrickValueError
+ 
+ 
+ # Check to see if matplotlib is at least sorta up to date
+-from distutils.version import LooseVersion
++from packaging.version import Version
+ 
+-mpl_ge_150 = LooseVersion(mpl.__version__) >= "1.5.0"
++mpl_ge_150 = Version(mpl.__version__) >= Version("1.5.0")
+ 
+ 
+ ##########################################################################
+diff --git a/yellowbrick/style/rcmod.py b/yellowbrick/style/rcmod.py
+index a41948d..bbfc1a9 100644
+--- a/yellowbrick/style/rcmod.py
++++ b/yellowbrick/style/rcmod.py
+@@ -26,9 +26,9 @@ import numpy as np
+ import matplotlib as mpl
+ 
+ # Check to see if we have a slightly modern version of mpl
+-from distutils.version import LooseVersion
++from packaging.version import Version
+ 
+-mpl_ge_150 = LooseVersion(mpl.__version__) >= "1.5.0"
++mpl_ge_150 = Version(mpl.__version__) >= Version("1.5.0")
+ 
+ 
+ from .. import _orig_rc_params
+-- 
+2.39.5 (Apple Git-154)
+
