@@ -22,7 +22,6 @@ requirements:
     - python
     - wheel
     - setuptools
-    - packaging
   run:
     - python
     - matplotlib-base >=2.0.2,!=3.0.0
@@ -30,6 +29,8 @@ requirements:
     - scikit-learn >=1.0.0
     - numpy >=1.16.0
     - cycler >=0.10.0
+    # due to remove distutils
+    - packaging
 
 test:
   imports:
